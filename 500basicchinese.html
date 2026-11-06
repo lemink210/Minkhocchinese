@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>500 Basic Chinese</title>
+<style>
+:root{--bg:#fff7ed;--fg:#2b2118;--card:#fff;--line:#e7d9c8;--ac:#e8590c;--acfg:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1a1612;--fg:#f3e9dc;--card:#26201a;--line:#3a3228;--ac:#ff922b;--acfg:#1a1612;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1a1612;--fg:#f3e9dc;--card:#26201a;--line:#3a3228;--ac:#ff922b;--acfg:#1a1612;color-scheme:dark}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line)}
+h1{font-size:20px;margin:0 auto 0 0}h2{font-size:17px;margin:20px 0 8px}
+button,.btn,select,input[type=number],textarea{font:inherit;background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:10px;padding:8px 12px;cursor:pointer}
+input[type=number]{width:70px;cursor:text;padding:6px}textarea{width:100%;cursor:text;font-size:20px}
+.pri{background:var(--ac);color:var(--acfg);border-color:var(--ac);font-weight:600}
+.on-mode{background:var(--ac);color:var(--acfg);border-color:var(--ac)}
+main{padding:0 16px 24px;max-width:980px;margin:auto}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:6px}
+.card small{opacity:.7}.card div{display:flex;gap:6px;flex-wrap:wrap}.card button{padding:6px 10px}
+.empty{padding:40px 0;text-align:center;opacity:.75}.card input{font:inherit;background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:4px 6px}.card .nm{width:100%;font-weight:600}.card .row{align-items:center}
+#reader,#setup{display:none}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 0}
+#stage{display:flex;justify-content:center;perspective:1400px;overflow:hidden;padding:4px}
+#page{position:relative;display:inline-block;transform-origin:left center;transition:transform .26s ease-in;box-shadow:0 4px 18px rgba(0,0,0,.25);background:#fff}
+#page.out{transform:rotateY(-90deg);transform-origin:left center}
+#page.outb{transform:rotateY(90deg);transform-origin:right center}
+#page.pre{transition:none;transform:rotateY(90deg);transform-origin:right center}
+#page.preb{transition:none;transform:rotateY(-90deg);transform-origin:left center}
+#cv{display:block}#ov{position:absolute;inset:0}
+#ov i{position:absolute;border-radius:4px;cursor:pointer;mix-blend-mode:multiply}
+#tx{display:none;margin-top:10px;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--card);font-size:38px;line-height:1.9;max-height:340px;overflow:auto}
+#tx span{cursor:pointer;border-radius:6px;padding:0 2px}
+#ov i.on,#tx span.on{background:rgba(255,166,0,.4)}#ov i.cur,#tx span.cur{background:rgba(255,69,58,.55)}
+.ctl{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;padding:10px 0}
+#sl{flex:1 1 220px;accent-color:var(--ac)}.big{font-size:22px;padding:14px 28px}
+#msg{opacity:.8;font-size:14px}
+.tabs{display:flex;gap:10px;overflow-x:auto;padding:12px;margin:14px 0;background:var(--card);border:1px solid var(--line);border-radius:18px}
+.tab{flex:1 0 96px;display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 6px;border-radius:14px;font-weight:600;font-size:13px}
+.tab.sel{border:2px solid #f06595;color:#d6336c;background:rgba(240,101,149,.1)}
+.ic{display:grid;place-items:center;width:52px;height:52px;border-radius:14px;font-size:28px}.ic.sm{width:34px;height:34px;font-size:20px;border-radius:10px;display:inline-grid;vertical-align:middle}
+.grid5{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px}.bkc{padding:10px;gap:8px}.bkn{font-weight:700;color:var(--ac);font-size:16px}.bkc .meta{display:flex;flex-wrap:wrap;gap:4px;align-items:center;font-size:13px}.bkc .meta input{width:56px}.card.emp{border-style:dashed;align-items:center;justify-content:center;text-align:center;min-height:150px;opacity:.85}
+.list{display:flex;flex-direction:column;gap:10px}
+.row2{display:flex;flex-wrap:wrap;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px}
+.bk{width:48px;height:48px;border-radius:14px;background:var(--ac);color:var(--acfg);display:grid;place-items:center;font-size:22px;font-weight:700}
+.mid{flex:1 1 240px;display:flex;flex-direction:column;gap:6px}.meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:14px}
+.act{display:flex;gap:6px;flex-wrap:wrap}.act button{padding:6px 10px}
+.row2 input{font:inherit;background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:4px 6px}.row2 .nm{width:100%;font-weight:600;font-size:17px}.empty.sm{padding:12px 0}
+table{border-collapse:collapse;width:100%}td,th{border-bottom:1px solid var(--line);padding:6px;text-align:left}td select{max-width:240px}#mmc img,#mmc canvas{width:100%;display:block;margin-bottom:8px;background:#fff}
+</style></head><body>
+<header>
+ <h1>📚 500 Basic Chinese</h1>
+ <label class="btn pri">📄 Nhập PDF (nhiều file)<input id="fp" type="file" accept=".pdf,application/pdf" multiple hidden></label>
+ <input id="fm" type="file" accept="audio/*,.mp3" multiple hidden><input id="fv" type="file" accept="image/*,.pdf" multiple hidden><input id="fp1" type="file" accept=".pdf,application/pdf" hidden>
+</header>
+<main>
+ <section id="lib"></section>
+ <section id="reader">
+  <div class="bar">
+   <button id="back">← Thư viện</button><b id="title"></b>
+   <select id="ls"></select><button id="gs">⚙ Bài / MP3 / trang</button><button id="bt" class="on-mode">📖 Đọc</button><button id="mmb">🧠 Mind map</button>
+   <button id="m1" class="on-mode">🎧 Nghe MP3</button><button id="m2">🧒 Bé tự đọc</button>
+  </div>
+  <div id="msg"></div>
+  <div id="rd">
+   <div id="stage"><div id="page"><canvas id="cv"></canvas><div id="ov"></div></div></div>
+   <div id="tx"></div>
+   <div class="ctl"><button id="pp">◀ Trang trước</button><span id="pginfo"></span><button id="np">Trang sau ▶</button></div>
+   <div id="actl" class="ctl">
+    <button id="pl">⏮</button><button id="pa" class="pri">▶ Phát</button><button id="nl">⏭</button><button id="mk">🎯 Chỉnh khớp lật trang</button><button id="mkr">↺ Tự động</button>
+    <input id="sl" type="range" min="0" max="1000" value="0"><span id="tm">0:00 / 0:00</span>
+   </div>
+   <div id="kctl" class="ctl" style="display:none">
+    <button id="ka" class="big">⏵ Tự chạy</button><select id="ksp"><option value="1200">Chậm</option><option value="800" selected>Vừa</option><option value="500">Nhanh</option></select><button id="kn" class="pri big">👆 Chữ tiếp theo</button><button id="kr">↺ Đọc lại từ đầu bài</button>
+    <span style="opacity:.75;font-size:14px">Bé đọc to rồi bấm nút. Quên chữ nào, bấm vào chữ đó để nghe đọc.</span>
+   </div>
+  </div>
+  <div id="mmv" style="display:none"><div class="bar"><button id="mmx" class="pri">← Về bài đọc</button><b id="mmt"></b><select id="mml"></select><select id="mmf"></select><button id="mmg">📂 Sửa / chuyển / xóa file</button><label class="btn">🧠 Thêm nhiều mind map<input id="fv3" type="file" accept="image/*,.pdf" multiple hidden></label><button id="mz1">➖</button><button id="mz2">➕</button></div><div id="mmc" style="overflow:auto;max-height:80vh;border:1px solid var(--line);border-radius:12px;padding:6px"></div></div>
+  <div id="setup">
+   <div class="bar"><label class="btn pri">🎵 Thêm nhiều MP3 một lúc<input id="fm2" type="file" accept="audio/*,.mp3" multiple hidden></label>
+    <label class="btn pri">🧠 Thêm nhiều mind map<input id="fv2" type="file" accept="image/*,.pdf" multiple hidden></label><label style="font-size:14px">Trang đầu mỗi bài (tiêu đề, từ khóa) đọc chậm gấp <input id="w1" type="number" min="1" max="10" step="0.5" style="width:64px"> lần</label><span style="font-size:14px">Chia chuẩn: bài 1 từ trang <input id="ps" type="number" min="1" style="width:64px"> mỗi bài <input id="pn" type="number" min="1" style="width:56px"> trang</span><button id="pa1">Áp dụng quyển này</button><button id="pa2">Áp dụng tất cả quyển</button><button id="sdone" class="pri">✔ Xong</button><span style="opacity:.75;font-size:14px">Chọn MP3 cho từng bài, chỉnh trang từ – đến. Tự lưu.</span></div>
+   <table id="tb"></table><div id="fl"></div>
+   <div id="ted" style="display:none;margin-top:10px"><b id="tedt"></b>
+    <p style="margin:4px 0;opacity:.75;font-size:14px">Chữ Hán đã tự trích từ PDF (nếu có). PDF là ảnh thì dán chữ Hán vào đây, bỏ pinyin cũng được. Mỗi dòng = một lần giọng đọc (một từ hoặc một câu, giữa các dòng giọng đọc có nghỉ). Chia dòng càng khớp thì chữ bôi màu và lật trang càng chuẩn. Sửa xong bấm Lưu.</p>
+    <textarea id="ta" rows="6"></textarea><button id="tsave" class="pri">Lưu chữ</button></div>
+  </div>
+ </section>
+</main>
+<audio id="au"></audio>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+const $=s=>document.querySelector(s),au=$('#au'),sleep=t=>new Promise(r=>setTimeout(r,t));
+const nat=(a,b)=>a.name.localeCompare(b.name,undefined,{numeric:true});
+const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+try{pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js'}catch(e){}
+const dbp=new Promise((res,rej)=>{try{const r=indexedDB.open('hanbook',1);r.onupgradeneeded=()=>r.result.createObjectStore('b',{keyPath:'id'});r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)}catch(e){rej(e)}});
+const mem=new Map();let warned=false;
+function warn(){if(warned)return;warned=true;const d=document.createElement('div');d.style.cssText='background:#ffe3e3;color:#a61e1e;padding:10px 16px;font-size:14px;font-weight:600';d.textContent='⚠ Khung này KHÔNG cho lưu dữ liệu: tải lên xong tắt hoặc tải lại trang là mất hết. Hãy mở trang bằng link đã đăng trong tab riêng của trình duyệt, không dùng khung xem trước trong chat.';document.body.prepend(d)}
+dbp.then(()=>{try{navigator.storage.persist()}catch(e){}},()=>{});
+const cp=async f=>new Blob([await f.arrayBuffer()],{type:f.type});
+async function st(mode,fn){try{const d=await dbp;return await new Promise((res,rej)=>{const t=d.transaction('b',mode),q=fn(t.objectStore('b'));t.oncomplete=()=>res(q.result);t.onerror=()=>rej(t.error)})}catch(e){warn();return null}}
+const getAll=async()=>(await st('readonly',s=>s.getAll()))||[...mem.values()];
+const put=async b=>{mem.set(b.id,b);await st('readwrite',s=>s.put(b))};
+const del=async id=>{mem.delete(id);await st('readwrite',s=>s.delete(id))};
+/* ---- thư viện ---- */
+async function renderLibOld(){
+ const all=await getAll(),bs=all.filter(b=>!b.del).sort((a,b)=>a.level-b.level||a.book-b.book),tr=all.filter(b=>b.del),el=$('#lib');
+ if(!bs.length){el.innerHTML=trashHtml(tr)+'<p class="empty">Chưa có sách. Bấm “Nhập PDF” và chọn nhiều file cùng lúc.<br>Tên file dạng <b>Level2_Book3.pdf</b> thì tự xếp đúng level; không có thì xếp theo tên, mỗi level 5 quyển.</p>';return}
+ const g={};bs.forEach(b=>(g[b.level]??=[]).push(b));
+ el.innerHTML=Object.keys(g).sort((a,b)=>a-b).map(l=>`<h2>Level ${l}</h2><div class="grid">`+g[l].map(b=>`<div class="card"><input class="nm" data-e="${b.id}" data-f="name" value="${esc(b.name)}"><div class="row">Level <input type="number" min="1" data-e="${b.id}" data-f="level" value="${b.level}"> Quyển <input type="number" min="1" data-e="${b.id}" data-f="book" value="${b.book}"></div><small>${b.mp3.length} MP3 · ${(b.mm||[]).length} mind map</small><div><button class="pri" data-o="${b.id}">Mở</button><button data-m="${b.id}">🎵 Nhập MP3</button><button data-v="${b.id}">🧠 Mind map</button><button data-s="${b.id}">📂 File</button><button data-d="${b.id}">🗑</button></div></div>`).join('')+'</div>').join('')+trashHtml(tr);
+}
+let mp3T=null;
+function trashHtml(tr){return tr.length?`<h2>🗑 Thùng rác (${tr.length}) – lỡ xóa nhầm thì bấm Khôi phục</h2><div class="grid">`+tr.map(b=>`<div class="card"><b>${esc(b.name)}</b><small>Level ${b.level} · Quyển ${b.book}</small><div><button class="pri" data-r="${b.id}">↩ Khôi phục</button><button data-x="${b.id}">Xóa hẳn</button></div></div>`).join('')+'</div>':''}
+$('#lib').onchange=async e=>{const t=e.target,id=t.dataset.e;if(!id)return;const b=(await getAll()).find(x=>x.id===id);if(!b)return;const f=t.dataset.f;b[f]=f==='name'?(t.value.trim()||b.name):Math.max(1,+t.value||1);await put(b);renderLib()};
+$('#lib').onclick=async e=>{const t=e.target.closest('button');if(!t)return;
+ if(t.dataset.o)openBook(t.dataset.o);
+ if(t.dataset.lv){LV=t.dataset.lv==='all'?'all':+t.dataset.lv;renderLib();return}
+ if(t.dataset.add){addT=t.dataset.add.split('-').map(Number);$('#fp1').click();return}
+ if(t.dataset.s){await openBook(t.dataset.s);$('#gs').click()}
+ if(t.dataset.m){mp3T=t.dataset.m;$('#fm').click()}
+ if(t.dataset.v){mp3T=t.dataset.v;$('#fv').click()}
+ if(t.dataset.d||t.dataset.r||t.dataset.x){const id=t.dataset.d||t.dataset.r||t.dataset.x;if(t.dataset.x){if(confirm('Xóa hẳn quyển này? Không khôi phục được nữa.'))await del(id)}else{const b=(await getAll()).find(x=>x.id===id);if(b){b.del=!!t.dataset.d;await put(b)}}renderLib()}};
+$('#fp').onchange=async e=>{
+ const fs=[...e.target.files].filter(f=>/\.pdf$/i.test(f.name)).sort(nat);let n=(await getAll()).length;
+ for(const f of fs){const nm=f.name.replace(/\.pdf$/i,''),P='(?:^|[^a-zà-ỹ])';
+  const lv=nm.match(new RegExp(P+'(?:level|lv|cap|cấp|l)[\\s_.-]*(\\d+)','i')),bk=nm.match(new RegExp(P+'(?:book|quyen|quyển|sach|sách|q|b)[\\s_.-]*(\\d+)','i'));
+  let level,book;if(lv&&bk){level=+lv[1];book=+bk[1]}else{level=Math.floor(n/5)+1;book=n%5+1}n++;
+  await put({id:Date.now()+'-'+Math.random().toString(36).slice(2),name:nm,level,book,pdf:await cp(f),mp3:[],map:null})}
+ e.target.value='';renderLib()};
+async function addPool(b,fs){
+ fs=[...fs].filter(f=>f.type.startsWith('audio')||/\.(mp3|m4a|wav|ogg)$/i.test(f.name)).sort(nat);
+ const have=new Set(b.mp3.map(x=>x.name));fs=fs.filter(f=>!have.has(f.name));for(const f of fs)b.mp3.push({name:f.name,blob:await cp(f)});
+ if(b.map){const used=new Set(b.map.map(m=>m.a));let j=0;b.map.forEach(m=>{if(m.a==null){while(j<b.mp3.length&&used.has(j))j++;if(j<b.mp3.length){m.a=j;used.add(j)}}})}
+ return put(b)}
+$('#fm').onchange=async e=>{const b=(await getAll()).find(x=>x.id===mp3T);if(b)await addPool(b,e.target.files);e.target.value='';renderLib()};
+async function addMM(b,fs){fs=[...fs].filter(f=>f.type.startsWith('image')||/\.(png|jpe?g|webp|gif|svg|pdf)$/i.test(f.name)).sort(nat);b.mm=b.mm||[];const have=new Set(b.mm.map(x=>x.name));fs=fs.filter(f=>!have.has(f.name));for(const f of fs)b.mm.push({name:f.name,blob:await cp(f)});
+ if(b.map){const used=new Set(b.map.map(m=>m.v));let j=0;b.map.forEach(m=>{if(m.v==null){while(j<b.mm.length&&used.has(j))j++;if(j<b.mm.length){m.v=j;used.add(j)}}})}
+ return put(b)}
+$('#fv').onchange=async e=>{const b=(await getAll()).find(x=>x.id===mp3T);if(b)await addMM(b,e.target.files);e.target.value='';renderLib()};
+/* ---- trình đọc ---- */
+let B,pdf,N,PT=[],PI=[],toks=[],sizes=[],LS=[],FI={},cl=0,cur=-1,pg=-1,mode='audio',busy=false,want=null,drag=false,txK=-1,big=true,kt=null,mmU=[],mk=null;
+const CJK=/[\u3400-\u9fff\uf900-\ufaff]/;
+const DEFPAT={s:16,n:6};
+function applyPat(map,pt){map.forEach((m,k)=>{m.p0=Math.min(N-1,pt.s-1+pt.n*k);m.p1=Math.min(N,Math.max(m.p0+1,m.p0+pt.n));delete m.cuts})}
+function ensureMap(){B.mm=B.mm||[];if(B.map&&B.map.length===20){B.map.forEach(m=>{if(m.v===undefined)m.v=null});const old=B.map.every((m,k)=>{const q=Math.min(N-1,Math.floor(k*N/20));return m.p0===q&&m.p1===Math.min(N,Math.max(q+1,Math.floor((k+1)*N/20)))});if(B.repat||old){applyPat(B.map,B.pat||DEFPAT);B.repat=false;put(B)}B.map.forEach(m=>{m.p0=Math.min(m.p0,N-1);m.p1=Math.min(N,Math.max(m.p1,m.p0+1))});return}B.map=Array.from({length:20},(_,k)=>{const pt=B.pat||DEFPAT,p0=Math.min(N-1,pt.s-1+pt.n*k);return{a:k<B.mp3.length?k:null,v:k<B.mm.length?k:null,p0,p1:Math.min(N,Math.max(p0+1,p0+pt.n)),text:''}})}
+async function fi(a){if(FI[a])return FI[a];const url=URL.createObjectURL(B.mp3[a].blob);const dur=await new Promise(r=>{const x=new Audio(url);x.onloadedmetadata=()=>r(x.duration||0);x.onerror=()=>r(0)});return FI[a]={url,dur}}
+async function buildLessons(){
+ toks=[];LS=[];PI=Array.from({length:N},()=>[]);txK=-1;
+ for(let k=0;k<20;k++){const m=B.map[k],t0=toks.length,txt=!!(m.text&&m.text.trim());
+  if(txt){const cs=[];let nl=false;for(const c of m.text){if(c==='\n')nl=true;else if(CJK.test(c)){cs.push({c,nl});nl=false}}const span=Math.max(1,m.p1-m.p0);cs.forEach((o,j)=>toks.push({p:Math.min(N-1,m.p0+Math.floor(j/cs.length*span)),ch:o.c,nl:o.nl,u:o.nl||j===0,tx:1}))}
+  else for(let p=m.p0;p<m.p1;p++)for(const t of PT[p]){PI[p].push(toks.length);toks.push(t)}
+  const f=m.a!=null&&B.mp3[m.a]?await fi(m.a):null;
+  const l={p0:m.p0,p1:m.p1,t0,t1:toks.length,url:f?f.url:null,dur:f?f.dur:0,txt};if(f&&f.dur)timing(l,m,f.an||null);LS.push(l)}
+ $('#ls').innerHTML=LS.map((l,k)=>`<option value="${k}">Bài ${k+1} (tr.${l.p0+1}–${l.p1})${l.url?' 🎵':''}</option>`).join('');$('#ls').value=cl}
+async function openBook(id){
+ B=(await getAll()).find(x=>x.id===id);FI={};cl=0;cur=-1;pg=-1;
+ $('#lib').style.display='none';$('#reader').style.display='block';$('#title').textContent=B.name;$('#msg').textContent='Đang đọc PDF…';
+ try{pdf=await pdfjsLib.getDocument({data:await B.pdf.arrayBuffer()}).promise}catch(e){alert('Không đọc được file PDF của quyển này (có thể file gốc đã bị xóa hoặc di chuyển trước khi app kịp lưu bản sao). Hãy bấm 🗑 rồi nhập lại PDF.');$('#back').click();return}N=pdf.numPages;
+ let ch=false;if(B.pdf instanceof File){try{B.pdf=await cp(B.pdf);ch=true}catch(e){}}
+ for(const k of['mp3','mm'])for(const f of B[k]||[])if(f.blob instanceof File){try{f.blob=await cp(f.blob);ch=true}catch(e){}}
+ if(ch)put(B);PT=[];sizes=[];let tot=0;
+ for(let p=0;p<N;p++){const g=await pdf.getPage(p+1),vp=g.getViewport({scale:1}),tc=await g.getTextContent(),a=[];let py=0;sizes[p]=[vp.width,vp.height];
+  for(const it of tc.items){if(!it.str)continue;const m=pdfjsLib.Util.transform(vp.transform,it.transform),h=Math.hypot(m[2],m[3]),cs=[...it.str],cw=it.width/cs.length;
+   let fu=true;cs.forEach((c,i)=>{if(CJK.test(c)){const nl=a.length>0&&Math.abs(m[5]-py)>h*.6;a.push({p,ch:c,x:m[4]+i*cw,y:m[5]-h*.88,w:cw,h:h*1.05,nl,u:fu||nl});fu=false;py=m[5]}})}
+  PT[p]=a;tot+=a.length}
+ ensureMap();await buildLessons();
+ $('#msg').textContent=tot?`Nhận được ${tot} chữ Hán từ PDF.`:'PDF này là ảnh, không có lớp chữ: bấm “⚙ Bài / MP3 / trang” rồi “✍” để dán chữ Hán từng bài. MP3 vẫn tự lật trang theo thời gian.';
+ $('#setup').style.display='none';$('#rd').style.display='block';setMode('audio')}
+function loadLesson(k){cl=k;$('#ls').value=k;const l=LS[k];refine(k);
+ if(l.url){if(au.dataset.k!==String(k)){au.src=l.url;au.dataset.k=k}}else{au.pause();au.removeAttribute('src');au.dataset.k=''}}
+function syncLesson(i){const l=LS[cl];if(i>=l.t0&&i<l.t1)return;const k=LS.findIndex(x=>i>=x.t0&&i<x.t1);if(k>=0){if(mode==='audio')loadLesson(k);else{cl=k;$('#ls').value=k}}}
+function setCursor(i){cur=i;if(i>=0)syncLesson(i);const p=i>=0?toks[i].p:LS[cl].p0;if(p!==pg)flipTo(p,p>pg?1:-1);else paint()}
+function paint(){
+ const tx=$('#tx');if(LS[cl]&&(big||LS[cl].txt)){tx.style.display='block';if(txK!==cl){txK=cl;const l=LS[cl];let h=l.t1>l.t0?'':'<small>Không trích được chữ Hán cho bài này (PDF có thể là ảnh). Bấm ⚙ Bài / MP3 / trang → ✍ để dán chữ vào.</small>';for(let i=l.t0;i<l.t1;i++)h+=(toks[i].nl&&i>l.t0?'<br>':'')+`<span data-i="${i}">${toks[i].ch}</span>`;tx.innerHTML=h}}else{tx.style.display='none'}
+ document.querySelectorAll('#ov i,#tx span').forEach(e=>{const i=+e.dataset.i;e.className=i<cur?'on':i===cur?'cur':''});
+ const c=document.querySelector('#tx span.cur');if(c)c.scrollIntoView({block:'nearest'});$('#pginfo').textContent=`Trang ${pg+1}/${N}`}
+async function flipTo(p,dir=1){
+ if(p===pg&&!busy){paint();return}
+ if(busy){want=p;return}busy=true;const pe=$('#page');
+ if(pg>=0){pe.className=dir>0?'out':'outb';await sleep(260)}
+ pg=p;await draw(p);pe.className=dir>0?'pre':'preb';void pe.offsetWidth;pe.className='';busy=false;paint();
+ const w=want;want=null;if(w!=null&&w!==pg)flipTo(w,w>pg?1:-1)}
+async function draw(p){
+ const g=await pdf.getPage(p+1),[bw,bh]=sizes[p],W=Math.max(300,Math.min($('#stage').clientWidth-8,860)),s=W/bw,d=devicePixelRatio||1,cv=$('#cv'),vp=g.getViewport({scale:s*d});
+ cv.width=vp.width;cv.height=vp.height;cv.style.width=W+'px';cv.style.height=bh*s+'px';
+ await g.render({canvasContext:cv.getContext('2d'),viewport:vp}).promise;
+ $('#ov').innerHTML=PI[p].map(i=>{const t=toks[i];return `<i data-i="${i}" style="left:${t.x*s}px;top:${t.y*s}px;width:${t.w*s}px;height:${t.h*s}px"></i>`}).join('')}
+function speak(t){try{const s=speechSynthesis;s.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='zh-CN';u.rate=.7;const vs=s.getVoices(),v=vs.find(v=>/^zh/i.test(v.lang));if(v)u.voice=v;
+ else if(vs.length)$('#msg').textContent='Máy chưa có giọng tiếng Trung: vào Cài đặt → Ngôn ngữ/Giọng nói để tải giọng Chinese (Mandarin).';s.speak(u)}catch(e){$('#msg').textContent='Trình duyệt này không hỗ trợ đọc giọng.'}}
+const clickTok=e=>{const el=e.target.closest('[data-i]');if(!el)return;const i=+el.dataset.i;speak(toks[i].ch);if(mode==='audio'&&LS[cl].url)seekTok(i,false)};
+$('#ov').onclick=clickTok;$('#tx').onclick=clickTok;
+function seekTok(i,play){
+ const k=LS.findIndex(x=>i>=x.t0&&i<x.t1);if(k<0)return;if(k!==cl||!au.src)loadLesson(k);
+ const l=LS[k];if(l.url&&l.tt)setT(l.tt[i-l.t0]+.001);
+ setCursor(i);if(play&&l.url)au.play()}
+function startLesson(k,play){loadLesson(k);const l=LS[k];if(l.t1>l.t0)seekTok(l.t0,play);else{cur=-1;flipTo(l.p0,l.p0>pg?1:-1);if(play&&l.url)au.play()}}
+function gotoPage(p){p=Math.max(0,Math.min(N-1,p));const i=toks.findIndex(t=>t.p===p);
+ if(mode==='audio'){const k=(LS[cl].p0<=p&&p<LS[cl].p1)?cl:LS.findIndex(l=>p>=l.p0&&p<l.p1);if(k>=0&&LS[k].url&&LS[k].b){const w=!au.paused,t=LS[k].b[p-LS[k].p0]+.001;if(k!==cl||!au.src)loadLesson(k);setT(t);syncT(LS[k],t);if(w)au.play();return}}
+ if(i>=0)cur=i-1;flipTo(p,p>pg?1:-1)}
+$('#pp').onclick=()=>gotoPage(pg-1);$('#np').onclick=()=>gotoPage(pg+1);
+$('#ls').onchange=e=>{const k=+e.target.value;stopAuto();if(mk)cancelMark();if(mode==='audio')startLesson(k,!au.paused&&!!LS[k].url);else{cl=k;cur=-1;setCursor(-1)}if($('#mmv').style.display==='block')showMM()};
+function setMode(m){stopAuto();mode=m;$('#m1').className=m==='audio'?'on-mode':'';$('#m2').className=m==='kid'?'on-mode':'';
+ $('#actl').style.display=m==='audio'?'flex':'none';$('#kctl').style.display=m==='kid'?'flex':'none';
+ if(m==='kid'){au.pause();try{speechSynthesis.cancel()}catch(e){}}
+ else{loadLesson(cl);const i=cur>=0?cur:LS[cl].t0;if(LS[cl].t1>LS[cl].t0)seekTok(i,false);else flipTo(LS[cl].p0)}}
+$('#m1').onclick=()=>B&&setMode('audio');$('#m2').onclick=()=>B&&setMode('kid');
+function kidNext(){if(mode==='kid'&&cur<toks.length-1)setCursor(cur+1)}
+function stopAuto(){if(kt){clearInterval(kt);kt=null}$('#ka').textContent='⏵ Tự chạy'}
+function startAuto(){stopAuto();$('#ka').textContent='⏸ Dừng';kt=setInterval(()=>{const l=LS[cl],n=Math.max(cur+1,l.t0);if(n>=l.t1)stopAuto();else setCursor(n)},+$('#ksp').value)}
+$('#ka').onclick=()=>kt?stopAuto():startAuto();$('#ksp').onchange=()=>{if(kt)startAuto()};
+$('#kn').onclick=kidNext;$('#kr').onclick=()=>{stopAuto();cur=-1;setCursor(-1)};
+$('#bt').onclick=()=>{big=!big;txK=-1;$('#bt').className=big?'on-mode':'';paint()};
+addEventListener('keydown',e=>{if(e.code==='Space'&&mode==='kid'&&$('#reader').style.display==='block'&&$('#setup').style.display!=='block'){e.preventDefault();kidNext()}});
+/* ---- phát MP3 ---- */
+const fmt=s=>isFinite(s)?Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0'):'0:00';
+$('#pa').onclick=()=>{if(!LS[cl]?.url)return alert('Bài này chưa có MP3. Bấm “⚙ Bài / MP3 / trang” để chọn file MP3 cho bài.');au.paused?au.play():au.pause()};
+au.onplay=()=>$('#pa').textContent='⏸ Tạm dừng';au.onpause=()=>$('#pa').textContent='▶ Phát';
+au.onended=()=>{if(mk){cancelMark();return}const k=LS.findIndex((l,j)=>j>cl&&l.url);if(k>=0)startLesson(k,true)};
+$('#pl').onclick=()=>{if(cl>0)startLesson(cl-1,!au.paused&&!!LS[cl-1].url)};
+$('#nl').onclick=()=>{if(cl<19)startLesson(cl+1,!au.paused&&!!LS[cl+1].url)};
+const sl=$('#sl');sl.onpointerdown=()=>drag=true;sl.onpointerup=()=>drag=false;
+sl.oninput=()=>{const l=LS[cl];if(!l||!l.dur)return;const t=sl.value/1000*l.dur,n=l.t1-l.t0;au.currentTime=t;
+ syncT(l,t);
+ $('#tm').textContent=fmt(t)+' / '+fmt(l.dur)};
+function tick(){const l=LS[cl];
+ if(B&&mode==='audio'&&l&&l.dur&&$('#setup').style.display!=='block'){const n=l.t1-l.t0;
+  if(!au.paused&&!mk){if(l.tt){syncT(l,au.currentTime)}
+   else{const p=Math.min(N-1,l.p0+Math.floor(au.currentTime/l.dur*(l.p1-l.p0)));if(p!==pg&&!busy)flipTo(p,1)}}
+  if(!drag){sl.value=au.currentTime/l.dur*1000;$('#tm').textContent=fmt(au.currentTime)+' / '+fmt(l.dur)}}
+ requestAnimationFrame(tick)}
+tick();
+/* ---- khớp giọng đọc với trang ---- */
+const setT=t=>{const s=()=>{au.currentTime=t};au.readyState>=1?s():au.addEventListener('loadedmetadata',s,{once:true})};
+function tokAt(l,t){let a=0,b=l.tt.length-1,r=-1;while(a<=b){const m=(a+b)>>1;if(l.tt[m]<=t){r=m;a=m+1}else b=m-1}return r<0?-1:l.t0+r}
+function syncT(l,t){if(!l.b)return;let j=0;while(j<l.b.length-2&&t>=l.b[j+1])j++;const p=l.p0+j,i=tokAt(l,t);
+ if(i>=0&&toks[i].p===p){if(i!==cur)setCursor(i)}
+ else{const c=i>=0?i:l.t0-1;if(c!==cur){cur=c;paint()}if(p!==pg&&!busy)flipTo(p,p>pg?1:-1)}}
+function timing(l,m,an){
+ const G=l.p1-l.p0,s0=an?an.s0:0,s1=an?an.s1:l.dur,gp=an?an.gaps.filter(g=>g.t>s0&&g.t<s1):[],C=gp.length+1,ui=[];
+ for(let i=l.t0;i<l.t1;i++)if(i===l.t0||toks[i].u||toks[i].p!==toks[i-1].p)ui.push(i);
+ const U=ui.length;if(C<3||!U||C-1<G-1)return timingOld(l,m,an);
+ const S=[s0,...gp.map(g=>g.t+g.len/2)],E=[...gp.map(g=>g.t-g.len/2),s1],uPage=Array.from({length:G},()=>[]);
+ ui.forEach((i,u)=>{const j=toks[i].p-l.p0;if(j>=0&&j<G)uPage[j].push(u)});
+ const wu=uPage.map(a=>a.length),ne=wu.filter(c=>c>0),av=ne.length?ne.reduce((a,c)=>a+c,0)/ne.length:1,w2=wu.map(c=>c||av),tot=w2.reduce((a,c)=>a+c,0),b=[s0],K=[0];
+ if(m.cuts&&m.cuts.length===G-1){for(const c of m.cuts){b.push(c);K.push(Math.max(K[K.length-1],gp.filter(g=>g.t<c).length))}}
+ else{let acc=0,last=-1;for(let j=0;j<G-1;j++){acc+=w2[j];let k=Math.round(C*acc/tot)-1;const up=C-2-(G-2-j);k=Math.max(last+1,Math.min(k,up));let best=k;
+  for(const d of[-1,1]){const q=k+d;if(gp[q]&&q>last&&q<=up&&gp[q].len>gp[best].len*1.3)best=q}
+  b.push(gp[best].t);K.push(best+1);last=best}}
+ b.push(s1);K.push(C);l.b=b;l.tt=new Float32Array(l.t1-l.t0);
+ for(let j=0;j<G;j++){const R=uPage[j].length;uPage[j].forEach((u,r)=>{const a=ui[u],c=(u+1<U?ui[u+1]:l.t1)-a,x0=K[j]+(K[j+1]-K[j])*r/R,x1=K[j]+(K[j+1]-K[j])*(r+1)/R;
+  for(let q=0;q<c;q++){const x=x0+(x1-x0)*q/c,ci=Math.min(C-1,Math.floor(x));l.tt[a+q-l.t0]=Math.max(b[j],Math.min(S[ci]+(x-ci)*(E[ci]-S[ci]),b[j+1]))}})}}
+function timingOld(l,m,an){
+ const G=l.p1-l.p0,s0=an?an.s0:0,s1=an?an.s1:l.dur,cnt=Array(G).fill(0),W=B.w1||3,gs=an?an.gaps.map(g=>[g.t-g.len/2,g.t+g.len/2]):[],SP=t=>{let s=t;for(const[a,c]of gs){if(t>a)s-=Math.min(t,c)-a;else break}return s},INV=v=>{let lo=0,hi=l.dur||s1;for(let i=0;i<30;i++){const mid=(lo+hi)/2;SP(mid)<=v?lo=mid:hi=mid}return lo};
+ for(let i=l.t0;i<l.t1;i++){const j=toks[i].p-l.p0;if(j>=0&&j<G)cnt[j]++}
+ const ne=cnt.filter(c=>c>0),av=ne.length?ne.reduce((a,c)=>a+c,0)/ne.length:8,wc=cnt.map((c,j)=>(c||av)*(j===0?W:1)),tot=wc.reduce((a,c)=>a+c,0),b=[s0];
+ if(m.cuts&&m.cuts.length===G-1)b.push(...m.cuts);
+ else{const ex=[];let acc=0;const a0=SP(s0),a1=SP(s1);for(let j=0;j<G-1;j++){acc+=wc[j];ex.push(INV(a0+(a1-a0)*(tot?acc/tot:(j+1)/G)))}
+  const win=(s1-s0)/G*.45,mg=Math.min(1.5,(s1-s0)/G/3);let last=s0;
+  ex.forEach(e=>{let best=e,bl=0;if(an)for(const g of an.gaps)if(Math.abs(g.t-e)<win&&g.len>bl&&g.t>last+mg){best=g.t;bl=g.len}best=Math.max(best,last+mg);b.push(best);last=best})}
+ b.push(s1);l.b=b;l.tt=new Float32Array(l.t1-l.t0);let q=0;
+ for(let j=0;j<G;j++){const c=cnt[j],sa=SP(b[j]),sb=SP(b[j+1]);for(let u=0;u<c&&q<l.tt.length;u++)l.tt[q++]=INV(sa+(sb-sa)*u/c)}}
+async function analyze(a){const f=FI[a];if(!f)return null;if(f.an!==undefined)return f.an;f.an=null;
+ try{const C=window.AudioContext||window.webkitAudioContext,ctx=new C(),buf=await ctx.decodeAudioData(await B.mp3[a].blob.arrayBuffer());ctx.close();
+  const d=buf.getChannelData(0),w=Math.floor(buf.sampleRate*.02),n=Math.floor(d.length/w),r=new Float32Array(n);
+  for(let i=0;i<n;i++){let s=0;for(let j=i*w;j<(i+1)*w;j++)s+=d[j]*d[j];r[i]=Math.sqrt(s/w)}
+  const sr=Float32Array.from(r).sort(),thr=Math.max(.004,sr[Math.floor(n*.95)]*.1);
+  const a0=r.findIndex(v=>v>thr);let a1=n-1;while(a1>0&&r[a1]<=thr)a1--;
+  const gaps=[];let run=-1;for(let i=Math.max(a0,0);i<=a1;i++){if(r[i]<=thr){if(run<0)run=i}else if(run>=0){const len=(i-run)*.02;if(len>=.25)gaps.push({t:(run+i)/2*.02,len});run=-1}}
+  f.an={s0:a0>=0?a0*.02:0,s1:a0>=0?(a1+1)*.02:buf.duration,gaps}}catch(e){f.an=null}return f.an}
+async function refine(k,force){const l=LS[k];if(!l||!l.url||(l.rf&&!force))return;l.rf=true;const m=B.map[k],an=await analyze(m.a);if(!B||LS[k]!==l)return;timing(l,m,an);if(k===cl&&!au.paused&&!mk)syncT(l,au.currentTime)}
+function mkLabel(){const l=LS[cl];$('#mk').textContent=mk?`📄 Hết trang này (${mk.cuts.length}/${l.p1-l.p0-1}) – bấm khi đọc xong trang`:'🎯 Chỉnh khớp lật trang'}
+function cancelMark(){mk=null;au.pause();mkLabel()}
+$('#mk').onclick=async()=>{
+ if(mk){const l=LS[mk.k],G=l.p1-l.p0;mk.cuts.push(au.currentTime);
+  if(mk.cuts.length>=G-1){const k=mk.k;B.map[k].cuts=mk.cuts;mk=null;au.pause();await put(B);await refine(k,true);mkLabel();$('#msg').textContent=`Đã lưu khớp lật trang cho bài ${k+1}. Bấm ▶ để nghe thử.`}
+  else{flipTo(l.p0+mk.cuts.length,1);mkLabel()}return}
+ const l=LS[cl];if(!l.url)return alert('Bài này chưa có MP3.');if(l.p1-l.p0<2)return alert('Bài này chỉ có 1 trang nên không cần chỉnh.');
+ mk={k:cl,cuts:[]};loadLesson(cl);setT(0);flipTo(l.p0,-1);au.play();mkLabel();$('#msg').textContent='Giọng đọc đang chạy từ đầu: mỗi lần đọc xong 1 trang thì bấm nút cam.'};
+$('#mkr').onclick=async()=>{if(mk){cancelMark();return}const m=B.map[cl];if(m.cuts){delete m.cuts;await put(B)}await refine(cl,true);$('#msg').textContent='Đã về chế độ tự động (dò khoảng nghỉ trong giọng đọc).'};
+/* ---- quản lý file: chuyển quyển / xóa ---- */
+const FLD={mp3:'a',mm:'v'};
+function rmFile(b,pool,fld,j){b[pool].splice(j,1);(b.map||[]).forEach(m=>{if(m[fld]===j)m[fld]=null;else if(m[fld]>j)m[fld]--})}
+async function finishFiles(){await put(B);Object.values(FI).forEach(f=>URL.revokeObjectURL(f.url));FI={};au.pause();au.removeAttribute('src');au.dataset.k='';await buildLessons();renderSetup()}
+async function renderFiles(){
+ const ob=(await getAll()).filter(x=>x.id!==B.id&&!x.del).sort((a,b)=>a.level-b.level||a.book-b.book);
+ const opt='<option value="">➡ Chuyển sang quyển…</option>'+ob.map(x=>`<option value="${x.id}">Level ${x.level} · Quyển ${x.book} · ${esc(x.name)}</option>`).join('');
+ const sec=(t,pool)=>`<h2>${t}</h2>`+((B[pool]||[]).length?B[pool].map((f,j)=>`<div class="bar"><span style="flex:1;min-width:140px">${esc(f.name)}</span><select data-mv="${pool}" data-j="${j}">${opt}</select><button data-rm="${pool}" data-j="${j}">🗑 Xóa</button></div>`).join(''):'<p style="opacity:.7">Chưa có file.</p>');
+ $('#fl').innerHTML=sec('File MP3 của quyển này (up nhầm thì chuyển sang quyển đúng hoặc xóa)','mp3')+sec('File mind map của quyển này (up nhầm thì chuyển sang quyển đúng hoặc xóa)','mm')}
+$('#fl').onchange=async e=>{const t=e.target,pool=t.dataset.mv;if(!pool||!t.value)return;
+ const j=+t.dataset.j,fld=FLD[pool],f=B[pool][j],o=(await getAll()).find(x=>x.id===t.value);if(!o)return;
+ rmFile(B,pool,fld,j);(o[pool]=o[pool]||[]).push(f);if(o.map){const m0=o.map.find(m=>m[fld]==null);if(m0)m0[fld]=o[pool].length-1}
+ await put(o);await finishFiles();$('#msg').textContent=`Đã chuyển “${f.name}” sang Level ${o.level} · Quyển ${o.book}.`};
+$('#fl').onclick=async e=>{const b=e.target.closest('[data-rm]');if(!b||!confirm('Xóa file này khỏi quyển?'))return;const pool=b.dataset.rm;rmFile(B,pool,FLD[pool],+b.dataset.j);await finishFiles()};
+$('#mmg').onclick=()=>$('#gs').click();
+$('#w1').onchange=async e=>{B.w1=Math.max(1,Math.min(10,+e.target.value||3));await put(B);LS.forEach((l,k)=>{if(l.url){const m=B.map[k],f=FI[m.a];timing(l,m,f&&f.an||null)}})};
+const readPat=()=>({s:Math.max(1,+$('#ps').value||16),n:Math.max(1,+$('#pn').value||6)});
+$('#pa1').onclick=async()=>{B.pat=readPat();applyPat(B.map,B.pat);await put(B);await buildLessons();renderSetup()};
+$('#pa2').onclick=async()=>{if(!confirm('Áp dụng cách chia trang này cho TẤT CẢ quyển? Trang từng bài đã chỉnh tay sẽ bị thay.'))return;const pt=readPat();B.pat=pt;applyPat(B.map,pt);await put(B);for(const b of await getAll()){if(b.id===B.id)continue;b.pat=pt;b.repat=true;await put(b)}await buildLessons();renderSetup();$('#msg').textContent='Đã áp dụng cho tất cả quyển.'};
+/* ---- thư viện: tab theo level ---- */
+let LV='all';
+const LVI={1:['🐣','#fff3bf'],2:['💎','#d3f9d8'],3:['🦊','#d0ebff'],4:['🦁','#ffd6e7'],5:['🐲','#e5dbff']};
+const row=b=>`<div class="row2"><div class="bk">${b.book}</div><div class="mid"><input class="nm" data-e="${b.id}" data-f="name" value="${esc(b.name)}"><div class="meta">Level <input type="number" min="1" data-e="${b.id}" data-f="level" value="${b.level}"> Quyển <input type="number" min="1" data-e="${b.id}" data-f="book" value="${b.book}"> <span>🎵 ${b.mp3.length} · 🧠 ${(b.mm||[]).length}</span></div></div><div class="act"><button class="pri" data-o="${b.id}">Mở</button><button data-m="${b.id}">🎵 MP3</button><button data-v="${b.id}">🧠 Mind map</button><button data-s="${b.id}">📂</button><button data-d="${b.id}">🗑</button></div></div>`;
+async function renderLibV1(){
+ const all=await getAll(),bs=all.filter(b=>!b.del).sort((a,b)=>a.level-b.level||a.book-b.book),tr=all.filter(b=>b.del),el=$('#lib');
+ const lvs=[...new Set([1,2,3,4,5,...bs.map(b=>b.level)])].sort((a,b)=>a-b);if(LV!=='all'&&!lvs.includes(LV))LV='all';
+ const tab=(k,ic,bg,t)=>`<button class="tab${LV===k?' sel':''}" data-lv="${k}"><span class="ic" style="background:${bg}">${ic}</span>${t}</button>`;
+ let h='<div class="tabs">'+tab('all','🌈','#f1f3f5','Tất cả')+lvs.map(l=>{const [ic,bg]=LVI[l]||['⭐','#e9ecef'];return tab(l,ic,bg,'Level '+l)}).join('')+'</div>';
+ if(!bs.length)h+='<p class="empty">Chưa có sách. Bấm “Nhập PDF” và chọn nhiều file cùng lúc.<br>Tên file dạng <b>Level2_Book3.pdf</b> thì tự xếp đúng level; không có thì xếp theo tên, mỗi level 5 quyển.</p>';
+ else for(const l of (LV==='all'?lvs:[LV])){const L=bs.filter(b=>b.level===l);if(LV==='all'&&!L.length)continue;const [ic,bg]=LVI[l]||['⭐','#e9ecef'];
+  h+=`<h2><span class="ic sm" style="background:${bg}">${ic}</span> Level ${l} <small style="opacity:.65;font-weight:400">(${L.length} quyển)</small></h2>`+(L.length?'<div class="list">'+L.map(row).join('')+'</div>':'<p class="empty sm">Level này chưa có quyển nào.</p>')}
+ el.innerHTML=h+trashHtml(tr)}
+/* ---- thư viện: mỗi level 5 quyển xếp hàng ngang ---- */
+LV=1;let addT=null;
+const card=b=>`<div class="card bkc"><div class="bkn">Quyển ${b.book}</div><input class="nm" data-e="${b.id}" data-f="name" value="${esc(b.name)}"><div class="meta">Level <input type="number" min="1" data-e="${b.id}" data-f="level" value="${b.level}"> Quyển <input type="number" min="1" data-e="${b.id}" data-f="book" value="${b.book}"></div><small>🎵 ${b.mp3.length} MP3 · 🧠 ${(b.mm||[]).length} mind map</small><div class="act"><button class="pri" data-o="${b.id}">Mở</button><button data-m="${b.id}">🎵 MP3</button><button data-v="${b.id}">🧠 Mind map</button><button data-s="${b.id}">📂</button><button data-d="${b.id}">🗑</button></div></div>`;
+const empt=(l,n)=>`<div class="card bkc emp"><div class="bkn">Quyển ${n}</div><small>Chưa có sách</small><button data-add="${l}-${n}">＋ Thêm PDF</button></div>`;
+$('#fp1').onchange=async e=>{const f=e.target.files[0];e.target.value='';if(!f||!addT)return;await put({id:Date.now()+'-'+Math.random().toString(36).slice(2),name:f.name.replace(/\.pdf$/i,''),level:addT[0],book:addT[1],pdf:await cp(f),mp3:[],map:null});renderLib()};
+async function renderLib(){
+ const all=await getAll(),bs=all.filter(b=>!b.del).sort((a,b)=>a.level-b.level||a.book-b.book),tr=all.filter(b=>b.del),el=$('#lib');
+ const lvs=[...new Set([1,2,3,4,5,...bs.map(b=>b.level)])].sort((a,b)=>a-b);if(LV!=='all'&&!lvs.includes(LV))LV='all';
+ const tab=(k,ic,bg,t)=>`<button class="tab${LV===k?' sel':''}" data-lv="${k}"><span class="ic" style="background:${bg}">${ic}</span>${t}</button>`;
+ let h='<div class="tabs">'+tab('all','🌈','#f1f3f5','Tất cả')+lvs.map(l=>{const [ic,bg]=LVI[l]||['⭐','#e9ecef'];return tab(l,ic,bg,'Level '+l)}).join('')+'</div>';
+ if(!bs.length&&LV==='all')h+='<p class="empty">Chưa có sách. Bấm “Nhập PDF” và chọn nhiều file cùng lúc, hoặc vào từng level rồi bấm “＋ Thêm PDF” ở đúng quyển.<br>Tên file dạng <b>Level2_Book3.pdf</b> thì tự xếp đúng chỗ.</p>';
+ for(const l of (LV==='all'?lvs:[LV])){const L=bs.filter(b=>b.level===l);if(LV==='all'&&!L.length)continue;const [ic,bg]=LVI[l]||['⭐','#e9ecef'],mx=Math.max(5,...L.map(b=>b.book));let cs='';
+  for(let n=1;n<=mx;n++){const f=L.filter(b=>b.book===n);cs+=f.length?f.map(card).join(''):empt(l,n)}
+  h+=`<h2><span class="ic sm" style="background:${bg}">${ic}</span> Level ${l}</h2><div class="grid5">${cs}</div>`}
+ el.innerHTML=h+trashHtml(tr)}
+/* ---- mind map ---- */
+let mmz=1;
+function mmClear(){mmU.forEach(u=>URL.revokeObjectURL(u));mmU=[];$('#mmc').innerHTML=''}
+async function showMM(){
+ const m=B.map[cl],f=m.v!=null&&(B.mm||[])[m.v];
+ 
+ au.pause();stopAuto();$('#rd').style.display='none';$('#setup').style.display='none';$('#mmv').style.display='block';$('#mmt').textContent='Mind map bài '+(cl+1);mmSel();mmClear();mmz=1;
+ const box=document.createElement('div');box.id='mmi';box.style.width='100%';$('#mmc').append(box);
+ if(!f){box.innerHTML='<p class="empty">Bài này chưa có mind map. Chọn file ở ô “chọn mind map cho bài này” phía trên, hoặc bấm “Thêm nhiều mind map”.</p>';return}
+ if(/pdf/i.test(f.blob.type)||/\.pdf$/i.test(f.name)){const d=await pdfjsLib.getDocument({data:await f.blob.arrayBuffer()}).promise;for(let p=1;p<=Math.min(d.numPages,8);p++){const g=await d.getPage(p),vp=g.getViewport({scale:2}),c=document.createElement('canvas');c.width=vp.width;c.height=vp.height;box.append(c);await g.render({canvasContext:c.getContext('2d'),viewport:vp}).promise}}
+ else{const u=URL.createObjectURL(f.blob);mmU.push(u);const im=new Image();im.src=u;box.append(im)}}
+function mmSel(){$('#mml').innerHTML=B.map.map((m,k)=>`<option value="${k}">Bài ${k+1}${m.v!=null&&B.mm[m.v]?' 🧠':''}</option>`).join('');$('#mml').value=cl;
+ const m=B.map[cl];$('#mmf').innerHTML='<option value="">— chọn mind map cho bài này —</option>'+(B.mm||[]).map((f,j)=>`<option value="${j}"${m.v===j?' selected':''}>${esc(f.name)}</option>`).join('')}
+$('#mml').onchange=e=>{cl=+e.target.value;cur=-1;$('#ls').value=cl;if(mode==='audio')loadLesson(cl);showMM()};
+$('#mmf').onchange=async e=>{B.map[cl].v=e.target.value===''?null:+e.target.value;await put(B);showMM()};
+$('#fv3').onchange=async e=>{await addMM(B,e.target.files);e.target.value='';showMM()};
+$('#mmb').onclick=()=>B&&showMM();
+$('#mmx').onclick=()=>{$('#mmv').style.display='none';mmClear();$('#rd').style.display='block';pg=-1;setMode(mode)};
+$('#mz1').onclick=()=>{mmz=Math.max(.5,mmz-.25);$('#mmi').style.width=mmz*100+'%'};
+$('#mz2').onclick=()=>{mmz=Math.min(4,mmz+.25);$('#mmi').style.width=mmz*100+'%'};
+/* ---- thiết lập bài ---- */
+function renderSetup(){renderFiles();$('#w1').value=B.w1||3;$('#ps').value=(B.pat||DEFPAT).s;$('#pn').value=(B.pat||DEFPAT).n;
+ $('#tb').innerHTML='<tr><th>Bài</th><th>File MP3</th><th>Trang từ – đến</th><th>Chữ</th><th>Mind map</th></tr>'+B.map.map((m,k)=>`<tr><td>${k+1}</td><td><select data-k="${k}" data-f="a"><option value="">— không có —</option>${B.mp3.map((f,j)=>`<option value="${j}"${m.a===j?' selected':''}>${esc(f.name)}</option>`).join('')}</select></td><td><input type="number" data-k="${k}" data-f="p0" min="1" max="${N}" value="${m.p0+1}"> – <input type="number" data-k="${k}" data-f="p1" min="1" max="${N}" value="${m.p1}"></td><td><button data-t="${k}">✍${m.text?' ✓':''}</button></td><td><select data-k="${k}" data-f="v"><option value="">— không có —</option>${(B.mm||[]).map((f,j)=>`<option value="${j}"${m.v===j?' selected':''}>${esc(f.name)}</option>`).join('')}</select></td></tr>`).join('')}
+$('#gs').onclick=()=>{if(!B)return;au.pause();stopAuto();mmClear();$('#mmv').style.display='none';$('#rd').style.display='none';$('#setup').style.display='block';$('#ted').style.display='none';renderSetup()};
+$('#tb').onchange=async e=>{const t=e.target,k=+t.dataset.k;if(isNaN(k))return;const m=B.map[k];
+ if(t.dataset.f==='a'||t.dataset.f==='v')m[t.dataset.f]=t.value===''?null:+t.value;
+ else{const v=Math.max(1,Math.min(N,+t.value||1));if(t.dataset.f==='p0'){m.p0=v-1;if(m.p1<=m.p0)m.p1=Math.min(N,m.p0+1)}else m.p1=Math.max(v,m.p0+1)}
+ await put(B);await buildLessons();renderSetup()};
+function extract(k){const m=B.map[k];let s='';for(let p=m.p0;p<m.p1;p++)for(const t of PT[p])s+=(t.u&&s?'\n':'')+t.ch;return s}
+let tk=0;
+$('#tb').onclick=e=>{const b=e.target.closest('[data-t]');if(!b)return;tk=+b.dataset.t;$('#tedt').textContent=`Chữ Hán của bài ${tk+1}`;$('#ta').value=B.map[tk].text||extract(tk);$('#ted').style.display='block';$('#ta').focus()};
+$('#tsave').onclick=async()=>{const v=$('#ta').value;B.map[tk].text=(v===extract(tk))?'':v;await put(B);await buildLessons();renderSetup();$('#ted').style.display='none'};
+$('#fm2').onchange=async e=>{await addPool(B,e.target.files);e.target.value='';await buildLessons();renderSetup()};
+$('#fv2').onchange=async e=>{await addMM(B,e.target.files);e.target.value='';renderSetup()};
+$('#sdone').onclick=()=>{$('#setup').style.display='none';$('#rd').style.display='block';pg=-1;cur=-1;cl=Math.min(cl,19);setMode(mode)};
+$('#back').onclick=()=>{au.pause();stopAuto();mmClear();$('#mmv').style.display='none';try{speechSynthesis.cancel()}catch(e){}Object.values(FI).forEach(f=>URL.revokeObjectURL(f.url));FI={};au.removeAttribute('src');au.dataset.k='';B=null;$('#reader').style.display='none';$('#lib').style.display='block';renderLib()};
+renderLib();
+</script></body></html>
